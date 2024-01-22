@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectsIndex renders correctly 1`] = `
+[
+  <h1>
+    Projects
+  </h1>,
+  <div
+    id="filters"
+  />,
+  <table
+    id="projects"
+  >
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Dummy 0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dummy 1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dummy 2
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dummy 3
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dummy 4
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+]
+`;
