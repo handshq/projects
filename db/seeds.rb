@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 25.times do |num|
-  Project.create(name: "live #{num}", start_date: 14.day.before, end_date: 14.day.from_now )
-  Project.create(name: "future #{num}", start_date: 14.day.from_now, end_date: 21.day.from_now)
-  Project.create(name: "ended #{num}", start_date: 21.day.before, end_date: 14.day.before)
-  Project.create(name: "not_set #{num}", start_date: nil, end_date: nil)
+  FactoryBot.create(:project, name: "live #{num}", start_date: 14.day.before, end_date: 14.day.from_now )
+  FactoryBot.create(:project, name: "future #{num}", start_date: 14.day.from_now, end_date: 21.day.from_now)
+  FactoryBot.create(:project, name: "ended #{num}", start_date: 21.day.before, end_date: 14.day.before)
+  FactoryBot.create(:project, name: "no_dates #{num}", start_date: nil, end_date: nil)
 end

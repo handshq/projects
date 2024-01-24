@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+.projects {
+  display: flex;
+}
+
+.projects-filters {
+  width: 300px;
+}
+
+.projects-table {
+  width: auto;
+}

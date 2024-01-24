@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: Project.all, status: :ok
+        @projects = Project.all
       end
     end
   end

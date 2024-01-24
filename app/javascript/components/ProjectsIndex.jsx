@@ -8,32 +8,55 @@ export default function ProjectsIndex() {
   //   })
   // }, [])
 
+  const date = new Date().toDateString();
+
   const projects = [
-    { name: "Dummy 0" },
-    { name: "Dummy 1" },
-    { name: "Dummy 2" },
-    { name: "Dummy 3" },
-    { name: "Dummy 4" }
+    { id: "1", name: "Dummy 0", start_date: date, end_date: date },
+    { id: "2", name: "Dummy 1", start_date: date, end_date: date },
+    { id: "3", name: "Dummy 2", start_date: date, end_date: date },
+    { id: "4", name: "Dummy 3", start_date: date, end_date: date },
+    { id: "5", name: "Dummy 4", start_date: date, end_date: date }
   ];
 
   return (
     <>
       <h1>Projects</h1>
-      <div id="filters">
 
+      <div className="projects">
+        <table className="projects-filters">
+          <thead>
+            <tr>
+              <th>Filters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+          </tbody>
+        </table>
+        <table className="projects-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Start date</th>
+              <th>End date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map((project) => {
+              return (
+                <tr key={project.id}>
+                  <td>{project.name}</td>
+                  <td>{project.start_date}</td>
+                  <td>{project.end_date}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
-      <table id="projects">
-        <thead>
-          <tr><th>Name</th></tr>
-        </thead>
-        <tbody>
-          {projects.map((project, index) => {
-            return (
-              <tr key={index}><td>{project.name}</td></tr>
-            )
-          })}
-        </tbody>
-      </table>
     </>
   )
 }
