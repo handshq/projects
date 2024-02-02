@@ -14,11 +14,6 @@
  *= require_self
  */
 
-th, td {
-  text-align: left;
-  padding: 8px;
-}
-
 .projects {
   display: flex;
 }
@@ -27,6 +22,18 @@ th, td {
   width: 300px;
 }
 
-.projects-table {
+.projects-list {
   width: auto;
+  border-spacing: 0px;
+}
+
+.heading, .item {
+  text-align: left;
+  padding: 8px;
+  margin: 0px;
+  font-size: 16px;
+}
+
+.heading {
+  font-weight: bold;
 }

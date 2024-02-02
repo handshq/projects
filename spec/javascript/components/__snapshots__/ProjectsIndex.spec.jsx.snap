@@ -8,100 +8,225 @@ exports[`ProjectsIndex renders correctly 1`] = `
   <div
     className="projects"
   >
-    <table
+    <div
       className="projects-filters"
     >
-      <thead>
-        <tr>
-          <th>
-            Filters
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td />
-        </tr>
-        <tr>
-          <td />
-        </tr>
-        <tr>
-          <td />
-        </tr>
-        <tr>
-          <td />
-        </tr>
-      </tbody>
-    </table>
+      <h2
+        className="heading"
+      >
+        Filters
+      </h2>
+      <div
+        className="item"
+      >
+        Live
+      </div>
+      <div
+        className="item"
+      >
+        Future
+      </div>
+      <div
+        className="item"
+      >
+        Ended
+      </div>
+      <div
+        className="item"
+      >
+        No dates
+      </div>
+    </div>
     <table
       className="projects-list"
     >
       <thead>
         <tr>
-          <th>
+          <th
+            className="heading"
+          >
             Name
           </th>
-          <th>
+          <th
+            className="heading"
+          >
             Start date
           </th>
-          <th>
+          <th
+            className="heading"
+          >
             End date
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>
-            Dummy 0
-          </td>
-          <td>
-            Thu Jan 01 1970
-          </td>
-          <td>
-            Thu Jan 01 1970
-          </td>
-        </tr>
-        <tr>
-          <td>
+          <td
+            className="item"
+          >
             Dummy 1
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
         </tr>
         <tr>
-          <td>
+          <td
+            className="item"
+          >
             Dummy 2
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
         </tr>
         <tr>
-          <td>
+          <td
+            className="item"
+          >
             Dummy 3
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
         </tr>
         <tr>
-          <td>
+          <td
+            className="item"
+          >
             Dummy 4
           </td>
-          <td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
-          <td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 5
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 6
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 7
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 8
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 9
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="item"
+          >
+            Dummy 10
+          </td>
+          <td
+            className="item"
+          >
+            Thu Jan 01 1970
+          </td>
+          <td
+            className="item"
+          >
             Thu Jan 01 1970
           </td>
         </tr>
