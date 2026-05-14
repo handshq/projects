@@ -154,7 +154,9 @@ export default function ProjectsIndex() {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  <span onClick={() => toggleOrderBy('name')}> Name &#8645; </span>
+                  <button onClick={() => toggleOrderBy("name")}>
+                    Name &#8645;
+                  </button>
                 </th>
                 <th
                   scope="col"
