@@ -45,7 +45,7 @@ export default function ProjectsIndex() {
 
   function toggleArchive() {
     setArchived((prev) => !prev)
-    setSelectedStatuses([])
+    setSelectedStatuses(() => [])
   }
 
   function toggleOrderBy(field) {
