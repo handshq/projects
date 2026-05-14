@@ -1,27 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Nav from "./Nav";
+import Paginate from "./Paginate";
 import axios from "axios";
-
-const navLinks = [
-  { name: "Dashboard", icon: "🏠" },
-  { name: "Projects", icon: "📁" },
-  { name: "Personnel", icon: "👥" },
-  { name: "Settings", icon: "⚙️" },
-];
 
 export default function ProjectsIndex() {
   const activeRoute = "Projects";
 
+  const [orderBy, setOrderBy] = useState({field: "", order: ""});
   const [projects, setProjects] = useState([]);
   const [archived, setArchived] = useState(false);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(null)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [inputValue, setInputValue] = useState("")
+  const debounceRef = useRef(null)
+  const clickedPageRef = useRef(null)
 
   useEffect(() => {
     axios
       .get("/projects.json", {
-        params: { archived, statuses: selectedStatuses },
+        params: {
+          archived,
+          statuses: selectedStatuses,
+          order_by: orderBy,
+          page: currentPage,
+          search: searchTerm,
+        },
       })
-      .then((res) => setProjects(res.data));
-  }, [archived]);
+      .then((res) => setProjectsResponse(res.data));
+  }, [archived, orderBy, selectedStatuses, currentPage, searchTerm]);
 
   function toggleStatus(status) {
     setSelectedStatuses((prev) =>
@@ -29,6 +37,35 @@ export default function ProjectsIndex() {
         ? prev.filter((s) => s !== status)
         : [...prev, status],
     );
+  }
+
+  function toggleArchive() {
+    setArchived((prev) => !prev)
+    setSelectedStatuses([])
+  }
+
+  function toggleOrderBy(field) {
+    setOrderBy((prev) => ({
+      field,
+      order:
+        prev.field === field && prev.order === "asc" ? "desc" : "asc",
+    }));
+  }
+
+  function setProjectsResponse(data) {
+    setNumberOfPages(data.number_of_pages)
+    setProjects(data.projects)
+  }
+
+  function search(term) {
+    setInputValue(term)
+    clearTimeout(debounceRef.current)
+
+    debounceRef.current = setTimeout(() => {
+      setProjects([])
+      setSearchTerm(term)
+      setCurrentPage(term === "" ? clickedPageRef.current : 1);
+    }, 500)
   }
 
   return (
@@ -42,32 +79,10 @@ export default function ProjectsIndex() {
           <span className="text-3xl">🤝</span>
           <span>HandsHQ</span>
         </header>
-        <nav className="flex flex-col gap-2" aria-label="Main navigation">
-          {navLinks.map((link) => {
-            const isActive = link.name === activeRoute;
-            return (
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <a
-                key={link.name}
-                href="#"
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-lg transition
-                  ${
-                    isActive
-                      ? "bg-white text-primary shadow font-bold"
-                      : "hover:bg-blue-600"
-                  }
-                `}
-                aria-current={isActive ? "page" : undefined}
-              >
-                <span>{link.icon}</span>
-                {link.name}
-              </a>
-            );
-          })}
-        </nav>
+        <Nav activeRoute={activeRoute} />
         <div className="mt-8 flex flex-col gap-6">
           <button
-            onClick={() => setArchived((prev) => !prev)}
+            onClick={toggleArchive}
             className={`w-full px-3 py-2 rounded-lg font-medium text-sm transition text-left ${
               archived
                 ? "bg-white text-primary font-bold shadow"
@@ -109,6 +124,15 @@ export default function ProjectsIndex() {
         <header>
           <h1 className="text-3xl font-bold mb-8 text-primary">Projects</h1>
         </header>
+        <div className="overflow-x-auto w-full max-w-4xl" aria-labelledby="projects-table-title">
+          <input
+            type="text"
+            placeholder="Search by project name..."
+            className="mb-4 px-4 py-2 border border-gray-300 rounded-lg shadow-sm w-full"
+            value={inputValue}
+            onChange={(e) => search(e.target.value)}
+          />
+        </div>
         <section
           className="overflow-x-auto w-full max-w-4xl shadow-xl rounded-lg bg-white border border-gray-200"
           aria-labelledby="projects-table-title"
@@ -124,7 +148,7 @@ export default function ProjectsIndex() {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider"
                 >
-                  Name
+                  <span onClick={() => toggleOrderBy('name')}> Name &#8645; </span>
                 </th>
                 <th
                   scope="col"
@@ -169,6 +193,12 @@ export default function ProjectsIndex() {
             </tbody>
           </table>
         </section>
+        <Paginate
+          currentPage={currentPage}
+          numberOfPages={numberOfPages}
+          setCurrentPage={setCurrentPage}
+          clickedPageRef={clickedPageRef}
+        />
       </main>
     </div>
   );
