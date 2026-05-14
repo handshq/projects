@@ -59,7 +59,8 @@ export default function ProjectsIndex() {
 
   function search(term) {
     setInputValue(term)
-    clearTimeout(debounceRef.current)
+
+    clearTimeout(debounceRef.current);
 
     debounceRef.current = setTimeout(() => {
       setProjects([])
@@ -67,6 +68,11 @@ export default function ProjectsIndex() {
       setCurrentPage(term === "" ? clickedPageRef.current : 1);
     }, 500)
   }
+
+  // cleanup debounce on unmount
+  useEffect(() => {
+    return () => clearTimeout(debounceRef.current)
+  }, [])
 
   return (
     <div className="min-h-screen flex bg-gray-50">
