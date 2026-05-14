@@ -28,7 +28,11 @@ export default function ProjectsIndex() {
           search: searchTerm,
         },
       })
-      .then((res) => setProjectsResponse(res.data));
+      .then((res) => {
+        const data = res.data;
+        setNumberOfPages(data.number_of_pages);
+        setProjects(data.projects);
+      });
   }, [archived, orderBy, selectedStatuses, currentPage, searchTerm]);
 
   function toggleStatus(status) {
@@ -50,11 +54,6 @@ export default function ProjectsIndex() {
       order:
         prev.field === field && prev.order === "asc" ? "desc" : "asc",
     }));
-  }
-
-  function setProjectsResponse(data) {
-    setNumberOfPages(data.number_of_pages)
-    setProjects(data.projects)
   }
 
   function search(term) {
