@@ -49,11 +49,12 @@ export default function ProjectsIndex() {
   }
 
   function toggleOrderBy(field) {
-    setOrderBy((prev) => ({
-      field,
-      order:
-        prev.field === field && prev.order === "asc" ? "desc" : "asc",
-    }));
+    setOrderBy(prev => {
+      const isSameField = prev.field === field;
+      const nextOrder = isSameField && prev.order === "asc" ? "desc" : "asc";
+
+      return { field, order: nextOrder };
+    });
   }
 
   function search(term) {
